@@ -1,0 +1,25 @@
+<!-- invoice.xsd -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://soa/invoice"
+           xmlns:tns="http://soa/invoice">
+
+    <xs:element name="createInvoiceRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="clientId" type="xs:string"/>
+                <xs:element name="amount"  type="xs:double"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="createInvoiceResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id"       type="xs:string"/>
+                <xs:element name="clientId" type="xs:string"/>
+                <xs:element name="amount"  type="xs:double"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: soa-invoice-service
+
+server:
+  port: 8082

@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: soa-client-service
+
+server:
+  port: 8081
