@@ -24,7 +24,7 @@ mvn spring-boot:run
 
 | Service | URL | Use case |
 |---|---|---|
-| soa-client | http://localhost:8080 |Provides 2 basics REST calls to simulate theservice bus(ESB) |
+| soa-client | http://localhost:8080 |Provides 2 basics REST calls to simulate a service bus(ESB) |
 | client-service | http://localhost:8081 |Simple project to produce a ClientResponse object|
 | invoice-service | http://localhost:8082 |Simple project to produce a InvoiceResponse object|
 
