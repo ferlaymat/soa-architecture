@@ -1,6 +1,6 @@
 # soa-architecture
 
-This repository is split into 3 sub-projects, 2 services and 1 clients to simulate a Services Oriented Architecture.
+This repository is split into 4 sub-projects, 3 services and 1 clients to simulate a Services Oriented Architecture.
 They cover basics exchanges between themusing SOAP messages.It s the easiest way to get started with this architecture.
 
 ## Requirements
