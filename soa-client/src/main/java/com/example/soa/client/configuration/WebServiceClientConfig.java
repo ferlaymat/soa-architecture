@@ -3,6 +3,7 @@ package com.example.soa.client.configuration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.ws.client.core.WebServiceTemplate;
 
 @Configuration
@@ -27,5 +28,10 @@ public class WebServiceClientConfig {
         template.setMarshaller(marshaller);
         template.setUnmarshaller(marshaller);
         return template;
+    }
+
+    @Bean
+    public RestTemplate restTemplate(){
+        return new RestTemplate();
     }
 }

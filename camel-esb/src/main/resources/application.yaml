@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: camel-esb
+
+server:
+  port: 8083
+
+camel:
+  springboot:
+    name: camelESB
+    main-run-controller: true
+
