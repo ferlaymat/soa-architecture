@@ -3,7 +3,7 @@ package com.example.soa.client.configuration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.client.RestClient;
 import org.springframework.ws.client.core.WebServiceTemplate;
 
 @Configuration
@@ -16,7 +16,7 @@ public class WebServiceClientConfig {
         // says to JAXB where finding annotated classes @XmlRootElement
         // Generated package
         marshaller.setContextPaths(
-            "soa.generated"
+                "soa.generated"
         );
         return marshaller;
     }
@@ -31,7 +31,7 @@ public class WebServiceClientConfig {
     }
 
     @Bean
-    public RestTemplate restTemplate(){
-        return new RestTemplate();
+    public RestClient restClient() {
+        return RestClient.create();
     }
 }
