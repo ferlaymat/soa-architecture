@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.client.RestClient;
 import org.springframework.ws.client.core.WebServiceTemplate;
 import soa.generated.CreateInvoiceRequest;
 import soa.generated.CreateInvoiceResponse;
@@ -15,19 +15,17 @@ import soa.generated.GetClientRequest;
 import soa.generated.GetClientResponse;
 
 import java.io.StringReader;
-import java.util.HashMap;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1")
 public class ApiController {
 
     private final WebServiceTemplate template;
-    private final RestTemplate restTemplate;
+    private final RestClient restClient;
 
     @Autowired
-    public ApiController(WebServiceTemplate template, RestTemplate restTemplate) {
-        this.restTemplate = restTemplate;
+    public ApiController(WebServiceTemplate template, RestClient restClient) {
+        this.restClient = restClient;
         this.template = template;
     }
 
@@ -45,7 +43,7 @@ public class ApiController {
 
     @GetMapping("/client/camel")
     public String getClientCamel() throws JAXBException {
-        String response = this.restTemplate.getForObject("http://localhost:8083/camel/api/esb/getClient?id=CAM1", String.class);
+        String response = this.restClient.get().uri("http://localhost:8083/camel/api/esb/getClient?id=CAM1").retrieve().body(String.class);
 
         JAXBContext context = JAXBContext.newInstance(GetClientResponse.class);
         Unmarshaller unmarshaller = context.createUnmarshaller();
@@ -71,7 +69,7 @@ public class ApiController {
     @GetMapping("/invoice/camel")
     public String getInvoiceCamel() throws JAXBException {
 
-        String response = this.restTemplate.getForObject("http://localhost:8083/camel/api/esb/createInvoice?clientId=CAM1&amount=149.90", String.class);
+        String response = this.restClient.get().uri("http://localhost:8083/camel/api/esb/createInvoice?clientId=CAM1&amount=149.90").retrieve().body(String.class);
 
         JAXBContext context = JAXBContext.newInstance(CreateInvoiceResponse.class);
         Unmarshaller unmarshaller = context.createUnmarshaller();
